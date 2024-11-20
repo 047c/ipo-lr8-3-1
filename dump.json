@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "Бетельгейзе",
+        "constellation": "Орион",
+        "is_visible": "True",
+        "radius": "1200"
+    },
+    {
+        "id": 2,
+        "name": "Ригель",
+        "constellation": "Орион",
+        "is_visible": "False",
+        "radius": "79"
+    },
+    {
+        "id": 3,
+        "name": "Альтаир",
+        "constellation": "Орёл",
+        "is_visible": "True",
+        "radius": "1.7"
+    },
+    {
+        "id": 4,
+        "name": "Сириус",
+        "constellation": "Большой пёс",
+        "is_visible": "False",
+        "radius": "1.7"
+    },
+    {
+        "id": 5,
+        "name": "Солнце",
+        "constellation": "Нет",
+        "is_visible": "True",
+        "radius": "6,957 * 10^8"
+    }
+]
