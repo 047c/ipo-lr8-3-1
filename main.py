@@ -5,14 +5,14 @@ counter = 0
 status = True
 
 
-def vse_zapisi():
+def all_record():
     file = open("dump.json", "r", encoding='utf-8')
     dump = json.load(file)
     print(json.dumps(dump, sort_keys=True, indent=4, ensure_ascii=False))
     file.close()
 
 
-def zapis_po_polyu():
+def all_record_field():
     counter = 0
     file = open("dump.json", "r", encoding='utf-8')
     dump = json.load(file)
@@ -36,7 +36,8 @@ def zapis_po_polyu():
     file.close()
 
 
-def add_zapis():
+def add_record():
+    valid = True
     file = open("dump.json", "r", encoding='utf-8')
     dump = json.load(file)
     target_id = -1
@@ -52,8 +53,13 @@ def add_zapis():
     name = input("Введите общее название звезды: ")
     constellation = input("Введите название созвездия: ")
     is_visible = input("Укажите, видима ли звезда без телескопа: (1 - видима, 0 - не видима)")
-    radius = input("Введите радус: ")
-    is_visible = "True" if is_visible == "1" else "False"
+    radius = (input("Введите радиус: "))
+    if is_visible == "1":
+        is_visible = True
+    elif is_visible == "0":
+        is_visible = False
+    else:
+        valid = False
     new_item = {
         "id": target_id,
         "name": name,
@@ -61,15 +67,17 @@ def add_zapis():
         "is_visible": is_visible,
         "radius": radius
     }
-    dump.append(new_item)
+    if valid:
+        dump.append(new_item)
+        print("\nЗапись успешно добавлена!")
+    else:
+        print("Введите корректное значение видимости звезды.")
     file.close()
     with open("dump.json", "w", encoding='utf-8') as file:
         json.dump(dump, file, indent=4, ensure_ascii=False)
 
-    print("\nЗапись успешно добавлена!")
 
-
-def udal_zapis():
+def delete_record():
     memory_status = False
     file = open("dump.json", "r", encoding='utf-8')
     dump = json.load(file)
@@ -108,13 +116,13 @@ def main():
         check = int(input("Введите номер пункта, который нужно выполнить: "))
         print(f"{decor}======{decor}")
         if check == 1:
-            vse_zapisi()
+            all_record()
         elif check == 2:
-            zapis_po_polyu()
+            all_record_field()
         elif check == 3:
-            add_zapis()
+            add_record()
         elif check == 4:
-            udal_zapis()
+            delete_record()
         elif check == 5:
             close_app()
         else:
